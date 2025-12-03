@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sony Bravia Web Пульт</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Пульт олишга пул йук</h1>
+      <div class="status-corner" id="statusCorner" title="Статус подключения"></div>
+    </div>
+
+    <div class="remote">
+      <!-- Питание -->
+      <div class="section">
+        <button class="btn btn-power" onclick="sendCommand('Power')">⏻</button>
+      </div>
+
+      <!-- Навигация -->
+      <div class="section navigation">
+        <div class="nav-row">
+          <button class="btn btn-nav" onclick="sendCommand('Up')">▲</button>
+        </div>
+        <div class="nav-row">
+          <button class="btn btn-nav" onclick="sendCommand('Left')">◄</button>
+          <button class="btn btn-nav btn-ok" onclick="sendCommand('Confirm')">OK</button>
+          <button class="btn btn-nav" onclick="sendCommand('Right')">►</button>
+        </div>
+        <div class="nav-row">
+          <button class="btn btn-nav" onclick="sendCommand('Down')">▼</button>
+        </div>
+      </div>
+
+      <!-- Быстрые кнопки -->
+      <div class="section quick-buttons">
+        <button class="btn btn-secondary" onclick="sendCommand('Return')">Назад</button>
+        <button class="btn btn-secondary" onclick="sendCommand('Home')">Home</button>
+        <button class="btn btn-secondary" onclick="sendCommand('Options')">Опции</button>
+      </div>
+
+      <!-- Громкость -->
+      <div class="section volume">
+        <div class="control-group">
+          <label>Громкость</label>
+          <div class="button-group">
+            <button class="btn btn-control" onclick="sendCommand('VolumeUp')">＋</button>
+            <button class="btn btn-control btn-mute" onclick="sendCommand('Mute')">🔇</button>
+            <button class="btn btn-control" onclick="sendCommand('VolumeDown')">－</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Каналы -->
+      <div class="section channels">
+        <div class="control-group">
+          <label>Каналы</label>
+          <div class="button-group">
+            <button class="btn btn-control" onclick="sendCommand('ChannelUp')">▲</button>
+            <button class="btn btn-control" onclick="sendCommand('ChannelDown')">▼</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Цифры -->
+      <div class="section numbers">
+        <div class="number-grid">
+          <button class="btn btn-number" onclick="sendCommand('Num1')">1</button>
+          <button class="btn btn-number" onclick="sendCommand('Num2')">2</button>
+          <button class="btn btn-number" onclick="sendCommand('Num3')">3</button>
+          <button class="btn btn-number" onclick="sendCommand('Num4')">4</button>
+          <button class="btn btn-number" onclick="sendCommand('Num5')">5</button>
+          <button class="btn btn-number" onclick="sendCommand('Num6')">6</button>
+          <button class="btn btn-number" onclick="sendCommand('Num7')">7</button>
+          <button class="btn btn-number" onclick="sendCommand('Num8')">8</button>
+          <button class="btn btn-number" onclick="sendCommand('Num9')">9</button>
+          <button class="btn btn-number" onclick="sendCommand('Input')">Вход</button>
+          <button class="btn btn-number" onclick="sendCommand('Num0')">0</button>
+          <button class="btn btn-number" onclick="sendCommand('Guide')">Guide</button>
+        </div>
+      </div>
+
+      <!-- Воспроизведение -->
+      <div class="section playback">
+        <div class="button-group">
+          <button class="btn btn-playback" onclick="sendCommand('Play')">▶</button>
+          <button class="btn btn-playback" onclick="sendCommand('Pause')">⏸</button>
+          <button class="btn btn-playback" onclick="sendCommand('Stop')">⏹</button>
+        </div>
+      </div>
+
+      <!-- Дополнительно -->
+      <div class="section apps">
+        <button class="btn btn-app" onclick="sendCommand('Netflix')">Netflix</button>
+        <button class="btn btn-app" onclick="sendCommand('Display')">Инфо</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div id="message" class="message"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

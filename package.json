@@ -1,0 +1,19 @@
+{
+  "name": "sony-bravia-web-remote",
+  "version": "1.0.0",
+  "description": "Web пульт для Sony Bravia KDL-50W755",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["sony", "bravia", "remote", "kdl"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "xml2js": "^0.6.2"
+  }
+}
