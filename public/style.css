@@ -369,9 +369,8 @@ body {
 
 /* Кнопки клавиатур */
 .keyboard-buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  display: flex;
+  justify-content: center;
   margin-top: 12px;
 }
 
@@ -382,6 +381,7 @@ body {
   background: linear-gradient(145deg, #f59e0b, #d97706);
   color: white;
   box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  min-width: 150px;
 }
 
 .btn-keyboard:hover {
@@ -480,49 +480,6 @@ body {
 .key-backspace {
   background: linear-gradient(145deg, #ef4444, #dc2626);
   color: white;
-}
-
-/* Буквенная клавиатура */
-.text-keyboard {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.keyboard-row {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-}
-
-.key-text {
-  flex: 1;
-  height: 50px;
-  max-width: 40px;
-  font-size: 1em;
-  background: linear-gradient(145deg, #3b82f6, #2563eb);
-  color: white;
-}
-
-.key-text:hover {
-  background: linear-gradient(145deg, #2563eb, #1d4ed8);
-}
-
-.key-space {
-  flex: 3;
-  height: 50px;
-  font-size: 0.9em;
-  background: linear-gradient(145deg, #8b5cf6, #7c3aed);
-  color: white;
-}
-
-.key-enter {
-  flex: 1;
-  height: 50px;
-  font-size: 1.2em;
-  background: linear-gradient(145deg, #10b981, #059669);
-  color: white;
-  min-width: 60px;
 }
 
 /* Анимация появления */

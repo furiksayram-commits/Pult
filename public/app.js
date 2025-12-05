@@ -111,68 +111,12 @@ function toggleNumberKeyboard() {
   }
 }
 
-// Функция открытия/закрытия буквенной клавиатуры
-function toggleTextKeyboard() {
-  const keyboard = document.getElementById('textKeyboard');
-  keyboard.classList.toggle('open');
-  
-  // Вибрация
-  if (navigator.vibrate) {
-    navigator.vibrate(30);
-  }
-}
-
-// Отправка текста (буквы)
-async function sendText(char) {
-  // Вибрация
-  if (navigator.vibrate) {
-    navigator.vibrate(30);
-  }
-  
-  const messageEl = document.getElementById('message');
-  messageEl.textContent = `Отправка символа: ${char}`;
-  messageEl.className = 'message';
-  
-  try {
-    const response = await fetch('/api/text', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ text: char })
-    });
-    
-    const data = await response.json();
-    
-    if (data.success) {
-      messageEl.textContent = `✓ Символ "${char}" отправлен`;
-      messageEl.className = 'message success';
-    } else {
-      messageEl.textContent = `✗ Ошибка: ${data.error}`;
-      messageEl.className = 'message error';
-    }
-  } catch (error) {
-    messageEl.textContent = `✗ Ошибка отправки: ${error.message}`;
-    messageEl.className = 'message error';
-  }
-  
-  // Очистка сообщения через 2 секунды
-  setTimeout(() => {
-    messageEl.textContent = '';
-    messageEl.className = 'message';
-  }, 2000);
-}
-
 // Закрытие клавиатуры при клике на фон
 document.addEventListener('click', (event) => {
   const numberKeyboard = document.getElementById('numberKeyboard');
-  const textKeyboard = document.getElementById('textKeyboard');
   
   if (event.target === numberKeyboard) {
     toggleNumberKeyboard();
   }
-  
-  if (event.target === textKeyboard) {
-    toggleTextKeyboard();
-  }
 });
+
