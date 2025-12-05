@@ -3,6 +3,7 @@ const express = require('express');
 const axios = require('axios');
 const xml2js = require('xml2js');
 const path = require('path');
+const os = require('os');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -182,15 +183,54 @@ app.get('/api/status', async (req, res) => {
   }
 });
 
+// Функция для получения локальных IP адресов
+function getLocalIPs() {
+  const interfaces = os.networkInterfaces();
+  const ips = [];
+  
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name]) {
+      // Пропускаем внутренние и не IPv4 адреса
+      if (iface.family === 'IPv4' && !iface.internal) {
+        ips.push({ name, address: iface.address });
+      }
+    }
+  }
+  
+  return ips;
+}
+
 app.listen(PORT, () => {
+  const localIPs = getLocalIPs();
+  
   console.log('╔════════════════════════════════════════════════╗');
   console.log('║   🎮 Sony Bravia Web Remote запущен           ║');
   console.log('╠════════════════════════════════════════════════╣');
   console.log(`║   📺 TV IP: ${TV_IP.padEnd(31)} ║`);
   console.log(`║   🔑 PSK: ${(TV_PSK ? '✓ Настроен' : '✗ Не указан').padEnd(33)} ║`);
-  console.log(`║   🌐 Сервер: http://localhost:${PORT.toString().padEnd(17)} ║`);
+  console.log(`║   🌐 Порт: ${PORT.toString().padEnd(34)} ║`);
+  console.log('╠════════════════════════════════════════════════╣');
+  console.log('║   📱 Откройте в браузере:                      ║');
+  console.log(`║   → http://localhost:${PORT.toString().padEnd(29)} ║`);
+  
+  if (localIPs.length > 0) {
+    localIPs.forEach((ip, index) => {
+      if (index === 0) {
+        console.log(`║   → http://${ip.address}:${PORT}${' '.repeat(48 - ip.address.length - PORT.toString().length - 13)} ║`);
+      } else {
+        console.log(`║   → http://${ip.address}:${PORT}${' '.repeat(48 - ip.address.length - PORT.toString().length - 13)} ║`);
+      }
+    });
+  }
+  
   console.log('╚════════════════════════════════════════════════╝');
   console.log('');
-  console.log('Откройте в браузере: http://localhost:' + PORT);
-  console.log('');
+  
+  if (localIPs.length > 0) {
+    console.log('💡 Для доступа с других устройств используйте:');
+    localIPs.forEach(ip => {
+      console.log(`   http://${ip.address}:${PORT} (${ip.name})`);
+    });
+    console.log('');
+  }
 });
