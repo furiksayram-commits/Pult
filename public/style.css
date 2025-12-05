@@ -283,3 +283,87 @@ body {
     font-size: 1.2em;
   }
 }
+
+/* Выдвигающаяся клавиатура */
+.btn-keyboard-toggle {
+  width: 100%;
+  height: 45px;
+  font-size: 1em;
+  background: linear-gradient(145deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-keyboard-toggle:hover {
+  background: linear-gradient(145deg, #059669, #047857);
+}
+
+#keyboardIcon {
+  font-size: 1.2em;
+  transition: transform 0.3s;
+}
+
+.keyboard-open #keyboardIcon {
+  transform: rotate(180deg);
+}
+
+.keyboard-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  margin-top: 0;
+}
+
+.keyboard-panel.open {
+  max-height: 500px;
+  padding: 15px;
+  margin-top: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.keyboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.keyboard-header span {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9em;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.btn-close:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-close:active {
+  transform: scale(0.9);
+}
+

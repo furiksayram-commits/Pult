@@ -99,3 +99,23 @@ document.addEventListener('keydown', (event) => {
 // Проверка статуса при загрузке и каждые 30 секунд
 checkStatus();
 setInterval(checkStatus, 30000);
+
+// Функция открытия/закрытия клавиатуры
+function toggleKeyboard() {
+  const panel = document.getElementById('keyboardPanel');
+  const icon = document.getElementById('keyboardIcon');
+  
+  panel.classList.toggle('open');
+  
+  // Изменяем иконку
+  if (panel.classList.contains('open')) {
+    icon.textContent = '✕';
+  } else {
+    icon.textContent = '🔢';
+  }
+  
+  // Вибрация
+  if (navigator.vibrate) {
+    navigator.vibrate(30);
+  }
+}

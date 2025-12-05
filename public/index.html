@@ -64,8 +64,19 @@
         </div>
       </div>
 
-      <!-- Цифры -->
-      <div class="section numbers">
+      <!-- Кнопка открытия клавиатуры -->
+      <div class="section">
+        <button class="btn btn-keyboard-toggle" onclick="toggleKeyboard()">
+          <span id="keyboardIcon">🔢</span> Клавиатура
+        </button>
+      </div>
+
+      <!-- Выдвигающаяся клавиатура -->
+      <div class="keyboard-panel" id="keyboardPanel">
+        <div class="keyboard-header">
+          <span>Цифровая клавиатура</span>
+          <button class="btn-close" onclick="toggleKeyboard()">✕</button>
+        </div>
         <div class="number-grid">
           <button class="btn btn-number" onclick="sendCommand('Num1')">1</button>
           <button class="btn btn-number" onclick="sendCommand('Num2')">2</button>
